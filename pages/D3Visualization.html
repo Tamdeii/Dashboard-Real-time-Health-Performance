@@ -14,13 +14,13 @@
     <div class="container">
         <!-- User Selection -->
         <div class="controls">
-            <label for="user-select">Select User ID: </label>
+            <label for="user-select">User: </label>
             <select id="user-select">
-                <option value="user_1">ID 1</option>
-                <option value="user_2">ID 2</option>
-                <option value="user_3">ID 3</option>
-                <option value="user_4">ID 4</option>
-                <option value="user_5">ID 5</option>
+                <option value="user_1">User 1 - Kishan jun</option>
+                <option value="user_2">User 2 - Isabella Park</option>
+                <option value="user_3">User 3 - Hong Lee</option>
+                <option value="user_4">User 4 - Chang Kim</option>
+                <option value="user_5">User 5 - Jung Park</option>
             </select>
             
             <label for="date-input" style="margin-left: 20px;">Date: </label>
@@ -28,7 +28,9 @@
             
             <button id="load-btn">Load Data</button>
             
+            <span id="health-status" style="margin-left: 30px; font-weight: bold; font-size: 16px; padding: 5px 15px; border-radius: 5px; background-color: #f0f0f0; color: #666;">Status: Loading...</span>
             <span id="current-time" style="margin-left: 20px; font-weight: bold; color: #2196f3;"></span>
+            <span id="api-status" style="margin-left: 20px; font-size: 12px; color: #666;"></span>
         </div>
         
          <!-- Charts Section -->
@@ -65,6 +67,7 @@
 
     <div class="tooltip" id="tooltip"></div>
 
+    <script src="../api.js"></script>
     <script src="../D3Visualization.js"></script>
 </body>
 </html>
