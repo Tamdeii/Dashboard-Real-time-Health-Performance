@@ -1,0 +1,172 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f5f5f5;
+    position: relative;
+}
+
+.home-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.home-btn:hover {
+    background-color: #2980b9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+.controls {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.controls label {
+    font-weight: bold;
+    color: #555;
+}
+
+.controls select,
+.controls input {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.controls button {
+    padding: 6px 20px;
+    margin-left: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.controls button:hover {
+    background-color: #2980b9;
+}
+
+#current-time {
+    font-family: 'Courier New', monospace;
+    font-size: 15px;
+}
+
+.chart-section {
+    margin: 30px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+.chart-section h2 {
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.chart-container {
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.loading {
+    color: #666;
+    font-style: italic;
+}
+
+.error {
+    color: #d32f2f;
+}
+
+.line {
+    fill: none;
+    stroke-width: 2;
+}
+
+.axis {
+    font-size: 12px;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #999;
+    shape-rendering: crispEdges;
+}
+
+.grid line {
+    stroke: #e0e0e0;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+}
+
+.grid path {
+    stroke-width: 0;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Legend styles */
+.legend-text {
+    font-size: 12px;
+}
+
+/* Axis label styles */
+.axis-label {
+    font-size: 12px;
+}
+
+/* Data info styles */
+.data-count {
+    color: #666;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.date-display {
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: center;
+}

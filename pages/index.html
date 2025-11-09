@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Performance Dashboard</title>
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <h1>Health Performance Dashboard</h1>
+        
+        <!-- Time Display -->
+        <div class="controls">
+            <span id="current-time" style="font-weight: bold; color: #3498db;"></span>
+        </div>
+        
+                <!-- User Status Table -->
+        <div class="chart-section">
+            <table class="status-table">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Patient Name</th>
+                        <th>Health Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="user-table-body">
+                    <tr>
+                        <td colspan="4" class="loading">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../home.js"></script>
+</body>
+</html>
