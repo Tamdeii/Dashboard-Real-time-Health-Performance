@@ -230,19 +230,6 @@ function loadDatasets() {
     
     allData = {};
 
-    // Update timestamp
-    const now = new Date();
-    const currentTimeStr = now.toLocaleString('en-US', { 
-        year: 'numeric',
-        month: '2-digit', 
-        day: '2-digit',
-        hour: '2-digit', 
-        minute: '2-digit', 
-        second: '2-digit',
-        hour12: false 
-    });
-    document.getElementById('current-time').textContent = `Loaded: ${currentTimeStr}`;
-
     // Load all datasets
     const loadPromises = datasets.map(dataset => 
         d3.csv(dataset.file)
@@ -264,7 +251,9 @@ function loadDatasets() {
 
 // Event listeners
 document.getElementById('load-btn').addEventListener('click', () => {
-    SELECTED_USER = document.getElementById('user-select').value;
+    // Get user from URL parameters (user is no longer selectable via dropdown)
+    const urlParams = new URLSearchParams(window.location.search);
+    SELECTED_USER = urlParams.get('user') || 'user_1';
     TARGET_DATE = document.getElementById('date-input').value;
     console.log(`Loading data for ${SELECTED_USER} on ${TARGET_DATE}`);
     
@@ -292,8 +281,7 @@ document.getElementById('load-btn').addEventListener('click', () => {
     }
 });
 
-// Set the user selector and date input from URL parameters or defaults
-document.getElementById('user-select').value = SELECTED_USER;
+// Set the date input from URL parameters or defaults
 document.getElementById('date-input').value = TARGET_DATE;
 
 // Load initial data automatically

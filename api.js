@@ -145,16 +145,9 @@ async function collectAndSendData() {
     console.log('=== COLLECT AND SEND DATA CALLED ===');
     console.log('Collecting last 5 records for selected user...');
     
-    // Get currently selected user from dropdown
-    const userSelect = document.getElementById('user-select');
-    console.log('User select element:', userSelect);
-    
-    if (!userSelect) {
-        console.error('User select element not found');
-        return;
-    }
-    
-    const selectedUserFolder = userSelect.value; // e.g., 'user_1'
+    // Get currently selected user from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedUserFolder = urlParams.get('user') || 'user_1'; // e.g., 'user_1'
     const userId = parseInt(selectedUserFolder.split('_')[1]); // Extract user ID number
     
     console.log('Selected user folder:', selectedUserFolder);
@@ -190,8 +183,10 @@ async function collectAndSendData() {
             // Get the latest record from the response (last item)
             const latestRecord = apiResponse[apiResponse.length - 1];
             const ruleMatchAny = latestRecord.rule_match_any || 0;
+            const ruleExplain = latestRecord.rule_explain || '';
             
             console.log('Latest record rule_match_any:', ruleMatchAny);
+            console.log('Latest record rule_explain:', ruleExplain);
             
             // Update health status display
             const healthStatusElement = document.getElementById('health-status');
@@ -206,6 +201,19 @@ async function collectAndSendData() {
                     healthStatusElement.style.color = '#ffffff';
                 }
                 console.log('Health status updated:', ruleMatchAny === 0 ? 'Normal' : 'Abnormal');
+            }
+            
+            // Update rule explanation display
+            const ruleExplanationElement = document.getElementById('rule-explanation');
+            if (ruleExplanationElement) {
+                if (ruleMatchAny !== 0 && ruleExplain) {
+                    ruleExplanationElement.textContent = `⚠️ ${ruleExplain}`;
+                    ruleExplanationElement.style.display = 'inline';
+                } else {
+                    ruleExplanationElement.textContent = '';
+                    ruleExplanationElement.style.display = 'none';
+                }
+                console.log('Rule explanation updated:', ruleMatchAny !== 0 ? ruleExplain : 'Hidden');
             }
         }
         
@@ -274,15 +282,6 @@ if (typeof window !== 'undefined') {
     window.addEventListener('DOMContentLoaded', () => {
         console.log('=== DOM LOADED - STARTING AUTO SEND ===');
         startAutoSend();
-        
-        // Restart auto-send when user changes
-        const userSelect = document.getElementById('user-select');
-        if (userSelect) {
-            userSelect.addEventListener('change', () => {
-                console.log('=== USER CHANGED - RESTARTING AUTO SEND ===');
-                startAutoSend(); // This will clear the old interval and start fresh
-            });
-        }
     });
 }
 
